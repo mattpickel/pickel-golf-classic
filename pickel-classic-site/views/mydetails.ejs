@@ -1,0 +1,74 @@
+<%- include("header") -%>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container-mydetails">
+            <table class="responsive-table mydetails-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= user.fName + ' ' + user.lName %></td>
+                        <td><%= user.email %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="responsive-table mydetails-table">
+                <thead>
+                    <tr>
+
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td><%= user.friday ? 'Yes' : 'No' %></td>
+                        <td><%= user.saturday ? 'Yes' : 'No' %></td>
+                        <td><%= user.sunday ? 'Yes' : 'No' %></td>
+                        <td><%= user.monday ? 'Yes' : 'No' %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/register">
+                <button class="register-link-button">
+                    Edit Registration Details
+                </button>
+            </a>
+            <a href="/changepassword">
+                <button class="red-button">
+                    Change Password
+                </button>
+            </a>
+            <br>
+            <h3>Registration Status</h3>
+            <% if(user.paymentstatus) { %>
+            <p>You are registered! Further updates will be sent to the email address you provided.</p>
+            <% } else { %>
+            <p>You have not yet paid. If you paid recently, please allow 48 hours for your payment status to change.</p>
+            <p>Click here to pay and complete your registration!</p>
+            <a href="/payment">
+                <button class="register-link-button">
+                    Pay Tournament Fees
+                </button>
+            </a>
+            <% } %>
+
+            <form action="/logout" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include("footer") -%>

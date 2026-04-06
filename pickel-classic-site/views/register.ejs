@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<div class="banner">
+
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container">
+            <p>Fill out the form below to register. If your account is already registered, you can update your
+                information by filling it out again and resubmitting.</p>
+            <p>If there is enough interest, we will put together tee times for Friday (the 23rd) and Monday (the 26th).
+                Please indicate below if you would be interested in playing those days. These rounds will not be
+                included in the tournament fees.
+            </p>
+
+            <form action="/register" method="post">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required>
+
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required>
+
+                <label>Days Participating:</label>
+                <label for="friday">
+                    <input type="checkbox" id="friday" name="friday">
+                    Friday
+                </label>
+                <label for="monday">
+                    <input type="checkbox" id="monday" name="monday">
+                    Monday
+                </label>
+                <label for="shirt">T-Shirt Size:</label>
+                <select id="shirt" name="shirt">
+                    <option value="sm">SM</option>
+                    <option value="md">MD</option>
+                    <option value="lg">LG</option>
+                    <option value="xl">XL</option>
+                </select>
+
+                <input type="submit"></input>
+            </form>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include('footer') %>

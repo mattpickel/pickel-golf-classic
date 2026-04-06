@@ -1,0 +1,37 @@
+<%- include('header') %>
+
+<div class="banner">
+
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container">
+            <p>Please enter the names of any golfers you would like to be grouped with. This is not guaranteed and teams
+                are likely to change from day to day. Leave blank if you have no preference.
+            </p>
+
+            <form action="/partners" method="post">
+                <!-- <label for="first_partner">First Partner</label> -->
+                <input type="text" id="first_partner" name="first_partner">
+
+                <!-- <label for="second_partner">Second Partner</label> -->
+                <input type="text" id="second_partner" name="second_partner">
+
+                <!-- <label for="third_partner">Third Partner</label> -->
+                <input type="text" id="third_partner" name="third_partner">
+
+                <!-- <label for="fourth_partner">Additional Partner</label> -->
+                <input type="text" id="fourth_partner" name="fourth_partner">
+                <input type="text" id="fifth_partner" name="fifth_partner">
+                <input type="text" id="sixth_partner" name="sixth_partner">
+
+
+
+                <input type="submit"></input>
+            </form>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include('footer') %>

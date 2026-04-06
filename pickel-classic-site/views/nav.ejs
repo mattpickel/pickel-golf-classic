@@ -1,0 +1,24 @@
+<div class="navbar">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+    <div class="navbar-links-container">
+        <a href="/" class="<%= currentPath === '/home' ? 'active' : '' %>">Home</a>
+        <a href="/info" class="<%= currentPath === '/info' ? 'active' : '' %>">Info</a>
+        <a href="/register"
+            class="<%= (currentPath === '/register' || currentPath === '/sidegames' || currentPath === '/createaccount' ) ? 'active' : '' %>">Register</a>
+        <a href="/golfers" class="<%= currentPath === '/golfers' ? 'active' : '' %>">Golfers</a>
+
+    </div>
+    <div class="navbar-login-container">
+        <% if (user) { %>
+        <a href="/mydetails" class="navbar-login">My Details</a>
+        <% } else { %>
+        <a href="/login" class="navbar-login">Login</a>
+        <% } %>
+    </div>
+
+
+
+
+</div>

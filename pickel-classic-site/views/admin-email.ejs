@@ -1,0 +1,21 @@
+<%- include("header") -%>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container-admin">
+            <form class="admin-email-form" action="/admin-email">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+                <label for="body">Body</label>
+                <input type="text" id="body" name="body">
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('bottomsponsorbar') %>
+
+
+
+<%- include("footer") -%>

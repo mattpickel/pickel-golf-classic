@@ -1,0 +1,26 @@
+<%- include('header') %>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container">
+            <form class="login-form" action="/login" method="post">
+                <label for="username">E-Mail/Username</label>
+                <input type="email" id="email" name="username" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <input class="login-btn" type="submit" value="Login"></input>
+                <a href="/forgotpassword" class="password-reset-link">Forgot Password?</a>
+            </form>
+            <h3>Don't have an account?</h3>
+            <a href="/createaccount" class="create-account-link">
+                <button class="create-account-link-btn">Create
+                    Account</button>
+            </a>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include('footer') %>

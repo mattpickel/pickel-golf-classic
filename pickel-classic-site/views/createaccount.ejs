@@ -1,0 +1,41 @@
+<%- include('header') %>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container">
+            <h2>Create An Account To Register!</h2>
+            <p>Your email address will be used to
+                login and check/change registration details, as well as to receive important updates about the
+                tournament.</p>
+            <form class="create-account-form" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="submit" value="Register">
+                <h2>Already have an account?</h2>
+                <input class="login-btn" type="button" value="Login" onclick="window.location.href='/login'">
+            </form>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+
+<script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            event.preventDefault();
+        }
+    });
+</script>
+
+
+<%- include('footer') %>

@@ -1,0 +1,37 @@
+Banner origin:
+
+/* .welcome-banner {
+    width: 45%;
+    margin: 0 auto;
+    padding: 60px 0;
+    background-color: var(--secondary-coolor);
+    border: solid 2px var(--primary-color);
+} */
+
+
+/* .event-sub-title {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 4rem;
+    padding: 0px 30px 10px;
+}
+
+.event-title {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 7rem;
+    padding: 10px 40px;
+}
+
+.detail-line {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 2.2rem;
+    list-style-type: none;
+} */
+
+
+Old body styling:
+/* display: flex;
+    flex-direction: column;
+    justify-content: center; */

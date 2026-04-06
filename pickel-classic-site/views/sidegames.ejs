@@ -1,0 +1,38 @@
+<%- include('header') %>
+
+<div class="banner">
+
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container">
+            <p>If there is enough interest, we will put together tee times for Friday (the 25th) and Monday (the 28th).
+                Please indicate below if you would be interested in playing those days. These rounds will not be
+                included in the tournament fees.
+            </p>
+
+            <p>Please also indicate if you would like to participate in sidegames (closest to the pin, longest putt,
+                etc).
+                More details on both the sidegames and the additional rounds will be provided at a future date.</p>
+
+            <form method="post">
+                <label for="friday">
+                    <input type="checkbox" id="friday" name="friday">
+                    Friday
+                </label>
+                <label for="monday">
+                    <input type="checkbox" id="monday" name="monday">
+                    Monday
+                </label>
+                <label for="sidegames">
+                    <input type="checkbox" id="sidegames" name="sidegames">
+                    Sidegames Interest?
+                </label>
+                <input type="submit"></input>
+            </form>
+        </div>
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include('footer') %>

@@ -1,0 +1,36 @@
+<%- include("header") -%>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+
+        <div class="responsive-table">
+            <table>
+                <tr>
+                    <th>Name</th>
+
+
+                    <th>Fri</th>
+                    <th>Mon</th>
+
+                    <!-- Add more headers based on the data you want to display -->
+                </tr>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.fName + ' ' + user.lName %></td>
+
+
+                    <td><%= user.friday ? 'Yes' : 'No' %></td>
+                    <td><%= user.monday ? 'Yes' : 'No' %></td>
+                    <!-- Add more data points based on the data you want to display -->
+                </tr>
+                <% }) %>
+            </table>
+        </div>
+
+        <%- include('bottomsponsorbar') %>
+    </div>
+</div>
+
+
+<%- include("footer") -%>

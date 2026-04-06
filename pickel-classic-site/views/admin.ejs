@@ -1,0 +1,60 @@
+<%- include("header") -%>
+
+<div class="banner">
+    <div class="content">
+        <%- include("nav") -%>
+        <div class="info-container-admin">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Sidegames</th>
+                    <th>Handicap</th>
+                    <th>Payment Status</th>
+                    <th>User Paid</th>
+                    <!-- Add more headers based on the data you want to display -->
+                </tr>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.fName %></td>
+                    <td><%= user.lName %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.friday %></td>
+                    <td><%= user.saturday %></td>
+                    <td><%= user.sunday %></td>
+                    <td><%= user.monday %></td>
+                    <td><%= user.sidegames %></td>
+                    <td><%= user.handicap %></td>
+                    <td><%= user.paymentstatus %></td>
+                    <td><button class="update-payment-status" data-id="<%= user._id %>">Update Status</button></td>
+                    <!-- Add more data points based on the data you want to display -->
+                </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('bottomsponsorbar') %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.update-payment-status').click(function () {
+            const userId = $(this).data('id');
+            $.post('/update-payment-status', {
+                id: userId
+            }, function (res) {
+                alert(res);
+            });
+        });
+    });
+</script>
+
+
+<%- include("footer") -%>

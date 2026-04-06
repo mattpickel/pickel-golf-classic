@@ -1,0 +1,606 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan&family=Libre+Franklin:wght@400;500;700&family=Tangerine:wght@400;700&family=Wix+Madefor+Display:wght@400;500;700&display=swap');
+
+
+:root {
+    /* --primary-color: #b89723; */
+    --primary-color: #e1c44d;
+    /* --primary-color: #a38b27; */
+    --secondary-coolor: #1a3310;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+html,
+body {
+    height: 100%;
+}
+
+h3 {
+    font-size: .9rem;
+}
+
+body {
+    font-family: 'Wix Madefor Display', sans-serif;
+}
+
+button {
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration: none;
+    border: 0;
+}
+
+footer {
+    position: fixed;
+    background-color: black;
+    width: 100%;
+    height: 48px;
+    bottom: 0;
+
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer p {
+    padding: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin: 0;
+    padding: 15px 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: scroll;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    min-width: 28px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+
+/* Background Image */
+.banner {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../imgs/golfcourse.png);
+    background-size: cover;
+    background-position: center;
+    min-width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Welcome Page Classes */
+
+.content-home {
+
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+
+}
+
+.welcome-content {
+    font-family: 'Wix Madefor Display', cursive;
+    position: absolute;
+}
+
+/* Welcome Banner */
+
+.welcome-banner-img {
+    width: 750px;
+}
+
+
+
+.welcome-banner {
+    width: 45%;
+    margin: 0 auto;
+    padding: 60px 0;
+    background-color: var(--secondary-coolor);
+    border: solid 2px var(--primary-color);
+    color: var(--primary-color);
+    text-shadow: 2px 1px 8px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} 
+
+
+.event-sub-title {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 4rem;
+    padding: 0px 30px 10px;
+}
+
+.event-title {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 7rem;
+    padding: 10px 40px;
+}
+
+.detail-line {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: 2.2rem;
+    list-style-type: none;
+}
+
+
+
+/* Welcome page buttons */
+.home-links {
+    padding: 20px;
+}
+
+.home-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 10px;
+    margin: 1% 2%;
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    width: 100px;
+    background-color: var(--secondary-coolor);
+    text-align: center;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.home-btn:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+
+}
+
+/* Welcome page sponsor block */
+.home-sponsor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-sponsor-container h2 {
+    font-family: 'Tangerine', cursive;
+    font-size: 2rem;
+    padding: 10px 0;
+}
+
+.spotify-player {
+    width: 60%;
+}
+
+.sml-player {
+    display: none;
+}
+
+/* Informational page classes */
+.content {
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    text-shadow: 2px 1px 8px black;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.info-container {
+
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    padding: 40px 20px;
+    border-radius: 10px;
+    /* overflow-y: auto;
+    min-height: auto;
+    max-height: 90%;
+    max-width: 700px; */
+    max-width: 700px;
+    margin: 0 auto;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.1rem;
+}
+
+.info-container-admin {
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+    min-height: auto;
+    max-height: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.1rem;
+}
+
+.info-container-mydetails {
+    background-color: white;
+    color: black;
+    text-shadow: none;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+    min-height: auto;
+    max-height: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.1rem;
+}
+
+
+/* Info page */
+
+.tournament-details {
+    font-weight: bold;
+}
+
+.register-link-button {
+    margin-top: 20px;
+    padding: 20px;
+    background: #4CAF50;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+
+}
+
+/* My Details page */
+.mydetails-table {
+    margin-bottom: 10px;
+}
+
+.red-button {
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 6px;
+    padding: 16px;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.0rem;
+}
+
+/* Create Account page */
+.create-account-form {
+    padding: 0 30px;
+}
+
+.responsive-table {
+    background-color: white;
+    color: black;
+    text-shadow: none;
+}
+
+/* Login page */
+.login-form {
+    padding: 0 20px 20px;
+}
+
+.create-account-link-btn {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #4CAF50;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.2rem;
+}
+
+.login-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-button {
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 6px;
+    padding: 16px;
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-size: 1.0rem;
+}
+
+/* Payment page */ 
+.qr-img {
+    width: 70%;
+}
+
+/* Navbar styling */
+.navbar {
+    /* overflow: hidden; */
+    background-color: black;
+    height: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+
+/* Bottom Sponsor Bar */
+.spotify-logo {
+    max-width: 24px;
+}
+
+.bottom-bar-wrapper {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 48px;
+}
+
+.bottom-bar-wrapper p {
+    padding: 0;
+}
+
+.text-container {
+    min-width: 200px;
+}
+
+.layfans-logo {
+    max-width: 48px;
+    height: 48px;
+}
+
+.logo-link-container {
+    display: flex;
+    align-items: center;
+}
+
+.spotify-link {
+    width: 24px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+    .welcome-banner-img {
+        width: 500px;
+    }
+
+    .banner-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        font-size: .8rem;
+    }
+
+    .home-links {
+        padding: 20px 0 20px 0;
+    }
+
+    .home-btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .home-btn {
+        padding: 7px;
+        border: 1px solid var(--primary-color);
+    }
+
+    .lrg-player {
+        display: none;
+    }
+
+    .sml-player {
+        display: inline;
+    }
+    
+
+}
+
+@media screen and (max-width: 725px) {
+    .responsive-table {
+        font-size: 0.9rem;
+
+        overflow-x: auto;
+    }
+
+    th,
+    td {
+        padding: 2px;
+    }
+
+
+
+    .navbar-links-container a {
+        display: none;
+    }
+
+    .navbar .icon {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .navbar-links-container.responsive {
+        position: absolute;
+        display: block;
+        width: 100%;
+        background-color: #333;
+        height: 192px;
+        overflow-y: hidden;
+        top: 48px;
+        left: 0px;
+    }
+
+    .navbar-links-container.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .navbar-links-container.responsive a {
+        display: block;
+        text-align: left;
+    }
+
+    .navbar-login-container {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .welcome-banner-img {
+        width: 350px;
+    }
+
+    .banner-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        font-size: .8rem;
+    }
+
+    .home-links {
+        padding: 20px 0 20px 0;
+    }
+
+    .home-btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .info-container p {
+        padding: 15px 15px;
+    }
+
+}
+
+@media screen and (max-height: 750px) {
+    .lrg-player {
+        display: none;
+    }
+
+    .sml-player {
+        display: inline;
+    }
+}
+
