@@ -7,16 +7,16 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Redirect if the user is already signed in
         if (isSignedIn) {
             navigate('/details');
         }
-    }, [isSignedIn, navigate]);  
+    }, [isSignedIn, navigate]);
 
-    // Show the SignIn component if not logged in
     return isSignedIn ? null : (
-        <div className='mx-auto'>
-            <SignIn forceRedirectUrl='/details' />;  
+        <div className="content-panel py-12">
+            <div className="flex justify-center">
+                <SignIn forceRedirectUrl='/details' />
+            </div>
         </div>
     );
 };

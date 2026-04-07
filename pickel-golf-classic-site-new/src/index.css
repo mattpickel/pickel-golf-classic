@@ -4,13 +4,11 @@
 
 @layer base {
   body {
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    color: #1c1c10;
+    font-size: 1.15rem;
   }
 }
 
@@ -19,29 +17,31 @@
     fill: white;
   }
 
-  .gold-divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #e1c44d, transparent);
+  .overline {
+    @apply font-sans text-[0.72rem] tracking-[0.22em] uppercase text-secondary-color font-semibold;
   }
 
-  .btn-primary {
-    @apply bg-green-800 text-gold-400 font-body font-semibold px-6 py-2.5 rounded
-           border border-gold-600/40 shadow-md
-           hover:bg-green-700 hover:border-gold-500 hover:shadow-lg
-           transition-all duration-200;
+  .gold-rule {
+    @apply w-10 h-px bg-secondary-color my-6 mx-auto;
   }
 
-  .btn-secondary {
-    @apply bg-gold-500 text-green-950 font-body font-semibold px-6 py-2.5 rounded
-           shadow-md
-           hover:bg-gold-400 hover:shadow-lg
-           transition-all duration-200;
+  .btn-gold {
+    @apply bg-secondary-color text-primary-color font-sans text-[0.74rem] tracking-[0.2em] uppercase font-bold px-10 py-3.5
+           hover:bg-gold-dark transition-colors duration-200;
   }
 
-  .btn-outline {
-    @apply bg-transparent text-gold-400 font-body font-semibold px-6 py-2.5 rounded
-           border border-gold-500/60
-           hover:bg-gold-500/10 hover:border-gold-400
-           transition-all duration-200;
+  .btn-outline-gold {
+    @apply border border-secondary-color text-secondary-color bg-transparent font-sans text-[0.74rem] tracking-[0.2em] uppercase font-bold px-10 py-3.5
+           hover:bg-secondary-color/10 transition-colors duration-200;
+  }
+
+  .form-input-underline {
+    @apply border-0 border-b border-cream-dark focus:border-primary-color outline-none bg-transparent
+           font-display text-xl py-2 w-full transition-colors duration-200;
+  }
+
+  .content-panel {
+    @apply max-w-4xl mx-auto bg-cream px-10 md:px-16;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
   }
 }

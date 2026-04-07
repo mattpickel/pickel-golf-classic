@@ -1,7 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-const dbPath = path.resolve(__dirname, 'database.sqlite');
+const dbDir = process.env.DB_PATH || __dirname;
+const dbPath = path.resolve(dbDir, 'database.sqlite');
 const db = new sqlite3.Database(dbPath);
 
 // Create the users table if it doesn't exist
@@ -103,18 +104,24 @@ const createUser = (user) => {
 const updateUser = (user) => {
     return new Promise((resolve, reject) => {
         const query = `
-            UPDATE users
-            SET first_name = ?, last_name = ?, friday = ?, monday = ?, shirt = ?, registered = ?
-            WHERE clerk_id = ?
+            INSERT INTO users (clerk_id, first_name, last_name, friday, monday, shirt, registered, paid)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 0)
+            ON CONFLICT(clerk_id) DO UPDATE SET
+                first_name = excluded.first_name,
+                last_name = excluded.last_name,
+                friday = excluded.friday,
+                monday = excluded.monday,
+                shirt = excluded.shirt,
+                registered = excluded.registered
         `;
         const values = [
+            user.clerkId,
             user.firstName,
             user.lastName,
             user.friday,
             user.monday,
             user.shirt,
-            user.registered,
-            user.clerkId
+            user.registered
         ];
 
         db.run(query, values, function (err) {

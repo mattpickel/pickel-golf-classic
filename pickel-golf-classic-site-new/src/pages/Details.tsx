@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SignedIn, SignedOut, RedirectToSignIn, useUser as useClerkUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
-import Container from '../components/Container';
+import PageHeader from '../components/PageHeader';
 
 interface UserData {
   first_name: string;
@@ -44,77 +44,71 @@ const Details: React.FC = () => {
     fetchUserData();
   }, [user]);
 
-  if (loading) {
-    return (
-      <Container>
-        <div className="flex justify-center items-center py-8">
-          <p className="font-body text-gray-500">Loading...</p>
-        </div>
-      </Container>
-    );
-  }
-
-  if (!userData) {
-    return (
-      <Container>
-        <div className="flex justify-center items-center py-8">
-          <p className="font-body text-gray-500">User data not found.</p>
-        </div>
-      </Container>
-    );
-  }
-
   return (
     <>
       <SignedOut>
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <Container>
-          <h1 className="font-display text-2xl md:text-3xl text-green-900 text-center font-bold mb-2">
-            My Details
-          </h1>
-          <div className="gold-divider mb-6"></div>
+        <PageHeader annualNumber={6} title="My Registration" />
+        <div className="content-panel flex-1">
+          <div className="max-w-xl mx-auto py-12">
+            {loading ? (
+              <p className="font-display text-xl text-text-muted text-center">Loading...</p>
+            ) : !userData ? (
+              <p className="font-display text-xl text-text-muted text-center">No registration data found.</p>
+            ) : (
+              <div className="bg-white border border-cream-dark border-t-[3px] border-t-secondary-color p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <p className="overline mb-1">Registrant</p>
+                    <h2 className="font-display font-semibold text-3xl text-text-dark">
+                      {userData.first_name} {userData.last_name}
+                    </h2>
+                  </div>
+                  <span className={`font-sans text-[0.68rem] tracking-[0.15em] uppercase font-bold px-3 py-1.5 border rounded ${
+                    userData.paid
+                      ? 'text-green-800 border-green-700 bg-green-50'
+                      : 'text-amber-800 border-amber-500 bg-amber-50'
+                  }`}>
+                    {userData.paid ? 'Paid' : 'Unpaid'}
+                  </span>
+                </div>
 
-          <div className="space-y-4 max-w-sm mx-auto">
-            <div className="flex justify-between items-baseline border-b border-gray-100 pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Name</span>
-              <span className="font-body text-gray-700">{userData.first_name} {userData.last_name}</span>
-            </div>
-            <div className="flex justify-between items-baseline border-b border-gray-100 pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Shirt Size</span>
-              <span className="font-body text-gray-700">{userData.shirt.toUpperCase()}</span>
-            </div>
-            <div className="flex justify-between items-baseline border-b border-gray-100 pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Friday</span>
-              <span className="font-body text-gray-700">{userData.friday ? 'Yes' : 'No'}</span>
-            </div>
-            <div className="flex justify-between items-baseline border-b border-gray-100 pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Monday</span>
-              <span className="font-body text-gray-700">{userData.monday ? 'Yes' : 'No'}</span>
-            </div>
-            <div className="flex justify-between items-baseline border-b border-gray-100 pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Registration</span>
-              <span className={`font-body font-medium ${userData.registered ? 'text-green-700' : 'text-amber-600'}`}>
-                {userData.registered ? 'Registered' : 'Not Registered'}
-              </span>
-            </div>
-            <div className="flex justify-between items-baseline pb-2">
-              <span className="font-body font-semibold text-green-900 text-sm">Payment</span>
-              <span className={`font-body font-medium ${userData.paid ? 'text-green-700' : 'text-amber-600'}`}>
-                {userData.paid ? 'Paid' : 'Not Paid'}
-              </span>
-            </div>
+                <div className="w-10 h-px bg-secondary-color mb-6" />
+
+                <div className="space-y-4">
+                  <div className="flex justify-between border-b border-cream-dark pb-3">
+                    <span className="overline pt-0.5">Shirt Size</span>
+                    <span className="font-display text-text-dark text-xl">{userData.shirt.toUpperCase()}</span>
+                  </div>
+                  <div className="flex justify-between border-b border-cream-dark pb-3">
+                    <span className="overline pt-0.5">Friday Afternoon</span>
+                    <span className="font-display text-text-dark text-xl">{userData.friday ? 'Yes' : 'No'}</span>
+                  </div>
+                  <div className="flex justify-between border-b border-cream-dark pb-3">
+                    <span className="overline pt-0.5">Monday</span>
+                    <span className="font-display text-text-dark text-xl">{userData.monday ? 'Yes' : 'No'}</span>
+                  </div>
+                  <div className="flex justify-between pb-3">
+                    <span className="overline pt-0.5">Registration</span>
+                    <span className="font-display text-text-dark text-xl">
+                      {userData.registered ? 'Confirmed' : 'Incomplete'}
+                    </span>
+                  </div>
+                </div>
+
+                {!userData.paid && (
+                  <div className="text-center mt-8">
+                    <button onClick={() => navigate('/payment')} className="btn-gold">
+                      Proceed to Payment
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
-
-          {!userData.paid && (
-            <div className="flex justify-center mt-6">
-              <button onClick={() => navigate('/payment')} className="btn-secondary">
-                Proceed to Payment
-              </button>
-            </div>
-          )}
-        </Container>
+        </div>
       </SignedIn>
     </>
   );

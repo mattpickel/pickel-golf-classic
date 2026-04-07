@@ -1,44 +1,47 @@
 import React from 'react';
 import { SignUp, SignedIn, SignedOut } from '@clerk/clerk-react';
-import Container from '../components/Container';
+import PageHeader from '../components/PageHeader';
 import { useNavigate } from 'react-router-dom';
 
 const Payment: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-center items-center">
-      <SignedOut>
-        <SignUp path="/sign-up" routing="path" />
-      </SignedOut>
-      <SignedIn>
-        <Container>
-          <h1 className="font-display text-2xl md:text-3xl text-green-900 text-center font-bold mb-2">
-            Complete Payment
-          </h1>
-          <div className="gold-divider mb-5"></div>
+    <>
+      <PageHeader annualNumber={6} title="Payment" />
+      <div className="content-panel">
+        <div className="max-w-xl mx-auto px-6 py-12">
+          <SignedOut>
+            <div className="flex justify-center">
+              <SignUp path="/sign-up" routing="path" />
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <div className="bg-white border border-cream-dark p-8 text-center">
+              <p className="overline mb-1">Almost There</p>
+              <h2 className="font-display font-semibold text-3xl text-text-dark mb-2">Complete Your Payment</h2>
+              <div className="w-10 h-px bg-secondary-color my-4 mx-auto" />
 
-          <p className="font-body text-gray-700 mb-5 text-center">
-            Thank you for submitting your registration details! To complete your registration,
-            please pay Donnie Pickel on Venmo. Please allow 48 hours for your payment status to change.
-          </p>
+              <p className="font-display text-xl text-text-mid mb-6">
+                Thank you for submitting your registration details! To complete your registration,
+                please pay Donnie Pickel on Venmo. Please allow 48 hours for your payment status to update.
+              </p>
 
-          <div className="flex justify-center mb-5">
-            <img src="/images/image0.png" alt="Venmo QR code" className="rounded-lg shadow-md max-w-[250px]" />
-          </div>
+              <img src="/images/image0.png" alt="Venmo QR code" className="mx-auto mb-6 max-w-[220px]" />
 
-          <div className="flex flex-col items-center gap-3">
-            <a href="https://venmo.com/u/Donnie-Pickel"
-               className="font-body text-green-800 hover:text-green-700 underline underline-offset-2 transition-colors">
-              Link to Venmo Profile
-            </a>
-            <button className="btn-primary" onClick={() => navigate('/details')}>
-              View My Details
-            </button>
-          </div>
-        </Container>
-      </SignedIn>
-    </div>
+              <a href="https://venmo.com/u/Donnie-Pickel"
+                 className="font-sans text-sm tracking-wide text-secondary-color hover:text-gold-dark underline underline-offset-4 transition-colors block mb-6">
+                OPEN VENMO PROFILE
+              </a>
+
+              <button className="btn-gold" onClick={() => navigate('/details')}>
+                View My Registration
+              </button>
+            </div>
+          </SignedIn>
+        </div>
+      </div>
+    </>
   );
 };
 

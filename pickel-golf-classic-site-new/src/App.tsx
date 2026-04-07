@@ -15,13 +15,15 @@ import Admin from './pages/Admin';
 
 const App: React.FC = () => {
   return (
-    <div className="relative bg-cover bg-center bg-fixed min-h-screen" style={{ backgroundImage: "url('/images/golfcourse.png')" }}>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
-      <div className="relative min-h-screen flex flex-col justify-between">
+    <div
+      className="min-h-screen flex flex-col bg-fixed bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/golfcourse.png')" }}
+    >
+      <div className="min-h-screen flex flex-col bg-primary-color/80">
         <UserProvider>
           <Router>
             <Navbar />
-            <main className="flex-1 py-6 md:py-10">
+            <main className="flex-1 flex flex-col">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/info" element={<Info />} />

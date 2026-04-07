@@ -1,62 +1,89 @@
 import React, { useState } from 'react';
-import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
-import { Link } from 'react-router-dom';
-import Modal from './Modal';
+import { SignedIn, SignedOut, UserButton, useClerk } from '@clerk/clerk-react';
+import { Link, useLocation } from 'react-router-dom';
 import hamburgerIcon from '../assets/hamburger.svg';
 import closeIcon from '../assets/close.svg';
 
 const Navbar: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const { openSignIn } = useClerk();
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const linkClasses = "text-gold-300 hover:text-gold-400 transition-colors duration-200 font-body text-sm tracking-wide uppercase";
+  const linkClass = (path: string) =>
+    `font-sans text-[0.62rem] tracking-[0.18em] uppercase transition-colors duration-200 ${
+      location.pathname === path ? 'text-primary-color font-bold' : 'text-text-mid hover:text-primary-color'
+    }`;
+
+  const navLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/info', label: 'Info' },
+    { to: '/register', label: 'Register' },
+    { to: '/layfans-terms', label: "LayFan's Terms" },
+  ];
 
   return (
-    <nav className="bg-green-950/90 backdrop-blur-sm border-b border-gold-500/20">
-      <div className="container mx-auto flex justify-between items-center px-4 py-3">
-        <div className="flex items-center space-x-6">
-          <button className="text-gold-300 lg:hidden" onClick={toggleMenu}>
-            <img src={hamburgerIcon} alt="Menu" className="w-6 h-6 navbar-toggle" />
-          </button>
-          <Link to="/" className={`${linkClasses} hidden lg:block`}>Home</Link>
-          <Link to="/info" className={`${linkClasses} hidden lg:block`}>Info</Link>
-          <Link to="/register" className={`${linkClasses} hidden lg:block`}>Register</Link>
-          <Link to="/layfans-terms" className={`${linkClasses} hidden lg:block`}>LayFan's Terms</Link>
-        </div>
-        <div className="flex items-center space-x-4">
-          <SignedOut>
-            <button onClick={openModal} className={linkClasses}>Login</button>
-          </SignedOut>
+    <nav className="bg-cream border-b-2 border-secondary-color h-16 px-6 md:px-10 flex items-center justify-between relative z-50">
+      <div className="flex items-center gap-8">
+        <Link to="/" className="font-display italic text-primary-color text-xl">
+          Pickel Golf Classic
+        </Link>
+        <div className="hidden lg:flex items-center gap-6">
+          {navLinks.map(link => (
+            <Link key={link.to} to={link.to} className={linkClass(link.to)}>
+              {link.label}
+            </Link>
+          ))}
           <SignedIn>
-            <Link to="/details" className={`${linkClasses} hidden lg:block`}>My Details</Link>
-            <UserButton />
+            <Link to="/details" className={linkClass('/details')}>My Registration</Link>
           </SignedIn>
         </div>
       </div>
-      <div
-        className={`absolute top-0 left-0 w-full bg-green-950 text-gold-300 flex flex-col items-center space-y-4 py-6 lg:hidden transition-transform duration-300 z-50 border-b border-gold-500/30 ${
-          isMenuOpen ? 'transform translate-y-0' : 'transform -translate-y-full'
-        }`}
-      >
-        <Link to="/" className={linkClasses} onClick={toggleMenu}>Home</Link>
-        <Link to="/info" className={linkClasses} onClick={toggleMenu}>Info</Link>
-        <Link to="/register" className={linkClasses} onClick={toggleMenu}>Register</Link>
-        <Link to="/layfans-terms" className={linkClasses} onClick={toggleMenu}>Layfan's Terms</Link>
+
+      <div className="flex items-center gap-4">
         <SignedOut>
-          <button onClick={() => { openModal(); toggleMenu(); }} className={linkClasses}>Login</button>
+          <button
+            onClick={() => openSignIn({ redirectUrl: '/details' })}
+            className="hidden lg:block font-sans text-[0.62rem] tracking-[0.2em] uppercase font-bold px-6 py-2 border border-primary-color text-primary-color hover:bg-primary-color hover:text-cream transition-colors duration-200"
+          >
+            Sign In
+          </button>
         </SignedOut>
         <SignedIn>
-          <Link to="/details" className={linkClasses} onClick={toggleMenu}>My Details</Link>
+          <UserButton />
         </SignedIn>
-        <button className="text-gold-300 lg:hidden mt-2" onClick={toggleMenu}>
-          <img src={closeIcon} alt="Close" className="w-6 h-6 navbar-toggle" />
+        <button className="lg:hidden" onClick={toggleMenu}>
+          <img src={hamburgerIcon} alt="Menu" className="w-6 h-6" style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(20%) saturate(1500%) hue-rotate(70deg)' }} />
         </button>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Mobile menu */}
+      <div
+        className={`absolute top-0 left-0 w-full bg-cream flex flex-col items-center gap-5 py-8 lg:hidden transition-transform duration-300 border-b-2 border-secondary-color shadow-lg ${
+          isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        {navLinks.map(link => (
+          <Link key={link.to} to={link.to} className={linkClass(link.to)} onClick={toggleMenu}>
+            {link.label}
+          </Link>
+        ))}
+        <SignedIn>
+          <Link to="/details" className={linkClass('/details')} onClick={toggleMenu}>My Registration</Link>
+        </SignedIn>
+        <SignedOut>
+          <button
+            onClick={() => { openSignIn({ redirectUrl: '/details' }); toggleMenu(); }}
+            className={linkClass('')}
+          >
+            Sign In
+          </button>
+        </SignedOut>
+        <button className="lg:hidden mt-2" onClick={toggleMenu}>
+          <img src={closeIcon} alt="Close" className="w-5 h-5" style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(20%) saturate(1500%) hue-rotate(70deg)' }} />
+        </button>
+      </div>
     </nav>
   );
 };
