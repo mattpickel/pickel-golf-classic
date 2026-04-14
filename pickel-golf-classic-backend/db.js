@@ -1,8 +1,8 @@
 const { Pool } = require('pg');
-require('dotenv').config();
 
 if (!process.env.DATABASE_URL) {
-    console.error('DATABASE_URL is not set!');
+    console.error('DATABASE_URL is not set! Check your environment variables.');
+    console.error('Available env vars:', Object.keys(process.env).filter(k => !k.includes('SECRET') && !k.includes('KEY') && !k.includes('PASSWORD')).join(', '));
     process.exit(1);
 }
 

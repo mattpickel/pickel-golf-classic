@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const handleWebhook = require('./webhookHandler');
 const { getUsers, getUserById, updateUser, updateUserPaidStatus, deleteUser } = require('./db');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
     'https://pickelgolfclassic.com',
     'https://www.pickelgolfclassic.com',
+    /^https:\/\/.*\.netlify\.app$/,
     /^http:\/\/localhost:\d+$/
 ];
 
@@ -104,4 +105,6 @@ app.delete('/api/users/:id', async (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`DATABASE_URL is ${process.env.DATABASE_URL ? 'set' : 'NOT SET'}`);
+    console.log(`NODE_ENV: ${process.env.NODE_ENV || 'not set'}`);
 });
