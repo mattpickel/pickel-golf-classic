@@ -10,8 +10,8 @@ interface InfoStripProps {
 
 const InfoStrip: React.FC<InfoStripProps> = ({ dates, location, registrationStatus, registrationDeadline, entryFee }) => {
   return (
-    <div className="bg-cream max-w-4xl mx-auto" style={{ boxShadow: '0 4px 40px rgba(0,0,0,0.3)' }}>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 py-4 px-6">
+    <div className="bg-cream max-w-5xl mx-auto" style={{ boxShadow: '0 4px 40px rgba(0,0,0,0.3)' }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 py-4 px-6">
         <div className="text-center py-4 md:py-0 md:px-6 md:border-r md:border-cream-dark">
           <p className="overline mb-1">When &amp; Where</p>
           <p className="font-display font-semibold text-2xl text-text-dark">{dates}</p>
